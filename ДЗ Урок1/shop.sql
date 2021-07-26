@@ -23,7 +23,7 @@ INSERT IGNORE INTO catalogs VALUES
 SELECT * FROM catalogs;
 
 UPDATE catalogs SET name = 'empty'
-WHERE name IS NULL LIMIT 1000;
+WHERE name IS NULL LIMIT 1;
 
 SELECT * FROM catalogs;
 
