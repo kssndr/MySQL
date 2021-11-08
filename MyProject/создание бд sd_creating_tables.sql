@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sd` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sd`;
 -- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
 --
 -- Host: localhost    Database: sd
@@ -164,7 +162,7 @@ CREATE TABLE `clients_type` (
   `name` varchar(45) DEFAULT NULL COMMENT 'Типы сессии (обычная, пакет, название программы)\n',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,6 +171,7 @@ CREATE TABLE `clients_type` (
 
 LOCK TABLES `clients_type` WRITE;
 /*!40000 ALTER TABLE `clients_type` DISABLE KEYS */;
+INSERT INTO `clients_type` VALUES (1,'Client'),(4,'Employee'),(3,'Partner'),(2,'Student');
 /*!40000 ALTER TABLE `clients_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +292,7 @@ CREATE TABLE `coach_type` (
   `name` varchar(45) DEFAULT NULL COMMENT 'Типы сессии (обычная, пакет, название программы)\n',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,6 +301,7 @@ CREATE TABLE `coach_type` (
 
 LOCK TABLES `coach_type` WRITE;
 /*!40000 ALTER TABLE `coach_type` DISABLE KEYS */;
+INSERT INTO `coach_type` VALUES (3,'Employee'),(2,'Partner'),(8,'Senior'),(1,'Student');
 /*!40000 ALTER TABLE `coach_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +327,7 @@ CREATE TABLE `coaches` (
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   KEY `coach_to_type_idx` (`id_coach_type`),
   CONSTRAINT `coach_to_type` FOREIGN KEY (`id_coach_type`) REFERENCES `coach_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,6 +336,7 @@ CREATE TABLE `coaches` (
 
 LOCK TABLES `coaches` WRITE;
 /*!40000 ALTER TABLE `coaches` DISABLE KEYS */;
+INSERT INTO `coaches` VALUES (1,8,'Innessa','Romanovskaya','1983-04-25','innessa.romanovskaya@gmail.com','89119324446','2021-10-20 13:11:31','2021-10-20 13:11:31'),(2,8,'Alexander','Khimchenko','1978-06-05','alexander.khimchenko@gmail.com','89111991568','2021-10-20 13:13:45','2021-10-20 13:13:45');
 /*!40000 ALTER TABLE `coaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,7 +394,7 @@ CREATE TABLE `session_format` (
   `name` varchar(45) DEFAULT NULL COMMENT 'Формат сессии (ZOOM, телефон, оффлайн)\n',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -402,6 +403,7 @@ CREATE TABLE `session_format` (
 
 LOCK TABLES `session_format` WRITE;
 /*!40000 ALTER TABLE `session_format` DISABLE KEYS */;
+INSERT INTO `session_format` VALUES (5,'messages'),(2,'off-line'),(1,'on-line'),(3,'phone'),(4,'report');
 /*!40000 ALTER TABLE `session_format` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -457,7 +459,7 @@ CREATE TABLE `sessions_type` (
   `name` varchar(45) DEFAULT NULL COMMENT 'Типы сессии (обычная, пакет, название программы)\n',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,6 +468,7 @@ CREATE TABLE `sessions_type` (
 
 LOCK TABLES `sessions_type` WRITE;
 /*!40000 ALTER TABLE `sessions_type` DISABLE KEYS */;
+INSERT INTO `sessions_type` VALUES (4,'Package'),(1,'Program'),(2,'Setup'),(3,'Single'),(5,'Team');
 /*!40000 ALTER TABLE `sessions_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -550,7 +553,7 @@ CREATE TABLE `tracks_status` (
   `name` varchar(45) DEFAULT NULL COMMENT 'парковка, в работе, на рассмотрении',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -559,6 +562,7 @@ CREATE TABLE `tracks_status` (
 
 LOCK TABLES `tracks_status` WRITE;
 /*!40000 ALTER TABLE `tracks_status` DISABLE KEYS */;
+INSERT INTO `tracks_status` VALUES (1,'Active'),(2,'Hold'),(3,'Offer');
 /*!40000 ALTER TABLE `tracks_status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -571,4 +575,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-20 15:01:10
+-- Dump completed on 2021-10-20 16:15:05
